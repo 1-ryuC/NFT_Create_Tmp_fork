@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     'function totalSupply() public view virtual override returns (uint256)',
     "function mint(uint _mintAmount) public payable",
   ]
-  const contractAddress = "0x9ee6c48d1984fA92dE6c0339741f384E62Ea114a"
+  const contractAddress = "0x47F961D27a8F833AC0Fb7C3aec5B18f087498877"
   useEffect(() => {
     const setSaleInfo = async() =>{
       const provider = await new ethers.providers.Web3Provider((window as any).ethereum);
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       try{
         await (window as any).ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x5' }],
+          params: [{ chainId: '0x13881' }],
         });
         const provider = await new ethers.providers.Web3Provider((window as any).ethereum);
         await provider.send('eth_requestAccounts', []);
@@ -52,14 +52,14 @@ const Home: NextPage = () => {
         await (window as any).ethereum.request({
           method: 'wallet_addEthereumChain',
           params: [{
-            chainId: '0x5',
-            chainName: 'goerli',
+            chainId: '0x13881',
+            chainName: 'mumbai',
             nativeCurrency: {
               name: 'ETH',
               symbol: 'ETH',
-              decimals: 5,
+              decimals: 18,
             },
-            rpcUrls: ['https://goerli.infura.io/v3/20cd5bade2c0407da65c6811cc2a1b37'],
+            rpcUrls: ['https://polygon-mumbai.infura.io/v3/082c3fef0d2e45e986fefb2186fa4fea'],
           }],
         });
         console.log('try');
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
       }
     }
     const mintQuantityPlus = async () =>{
-      if(mintQuantity == 3){
+      if(mintQuantity == 5){
         return;
       } else {
         setmintQuantity(mintQuantity + 1);
@@ -104,14 +104,14 @@ const Home: NextPage = () => {
       }
     };
     return <>
-    <div className="bg-black pb-16 flex flex-wrap buttom justify-center">
+     <div className="bg-black pb-16 flex flex-wrap buttom justify-center">
       <div className='px-8 pt-8 lg:px-28 lg:py-28'>
-        <Image className="min-w-full" src="/main_grap.png" alt="Main Image" width={500} height={500}/>
+        <Image className="min-w-full" src="/main.jpg" alt="Main Image" width={500} height={500}/>
       </div>
       <div className="m-12 lg:m-32 px-12 py-6 lg:pt-8 lg:px-20 border-2 bg-black text-center border-[#FFFFFF] bg-center bg-contain bg-no-repeat">
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Ryu Profile NFT</h1>
-        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']"> {mintNum} / 5000</h1>
-        <a className="text-2xl lg:text-4xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">3</a><a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-[#99CDDB] font-['Impact'] ">MAX</a><br/>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']">Ryu NFT Test</h1>
+        <h1 className="text-2xl lg:text-4xl pt-2 lg:pt-4 lg:pb-6 text-white font-['Impact']"> {mintNum} / 100</h1>
+        <a className="text-2xl lg:text-4xl pt-2 lg:pt-8 lg:pb-8 text-white font-['Impact']">5</a><a className="text-2xl lg:text-3xl pt-2 lg:pt-8 lg:pb-8 text-[#99CDDB] font-['Impact'] ">MAX</a><br/>
         
         <div className="pt-2 lg:pt-6 pb-7">
           <button type="button" className="text-2xl lg:text-3xl inline-flex flex-shrink-0 justify-center items-center gap-2 h-[1.375rem] w-[1.375rem] lg:h-[2.375rem] lg:w-[2.375rem]
